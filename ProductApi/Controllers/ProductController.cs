@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProductApi.DTO;
 using ProductApi.Repository;
 
@@ -6,6 +7,7 @@ namespace ProductApi.Controllers
 {
     [Route("api/v1/controller")]
     [ApiController]
+    [Authorize]
     public class ProductController : ControllerBase
     {
         private IProductRepository _repository;
