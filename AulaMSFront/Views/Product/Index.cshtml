@@ -25,6 +25,8 @@
                 <th>Stock</th>
                 <th>Category</th>
                 <th></th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
         <tbody>
@@ -37,8 +39,13 @@
                     <td>@item.Description</td>
                     <td>@item.CategoryName</td>
                     <td class="text-end">
-                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm">
+                        <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning">
                             <i class="fas fa-edit"></i>Editar
+                        </a>
+                    </td>
+                    <td class="text-end">
+                        <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger">
+                            <i class="fas fa-edit"></i>Delete
                         </a>
                     </td>
                 </tr>

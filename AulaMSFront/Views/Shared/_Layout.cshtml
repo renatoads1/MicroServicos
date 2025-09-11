@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="~/AulaMSFront.styles.css" asp-append-version="true" />
 </head>
 <body>
+    <div class="container alert-danger">
+        @if (ViewBag.Message != null)
+        {
+            <div class="alert alert-danger" role="alert">
+                @ViewBag.Message
+            </div>
+        }
+    </div>
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container-fluid">
