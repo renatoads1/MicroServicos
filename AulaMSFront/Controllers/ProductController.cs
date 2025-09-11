@@ -61,13 +61,13 @@ namespace AulaMSFront.Controllers
                 return RedirectToAction(nameof(Index));
             }
         }
-        
-        [HttpPost]
-        public async Task<IActionResult> Delete( ProductModel model)
-        {
-            var products = await _productService.GetAllProductsAsync();
-            return View(products);
-        }
 
+        [HttpGet]
+        public async Task<IActionResult> Delete(int id)
+        {
+            var products = await _productService.DeleteProductsAsync(id);
+
+            return RedirectToAction(nameof(Index));
+        }
     }
 }

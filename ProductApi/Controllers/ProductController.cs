@@ -36,6 +36,7 @@ namespace ProductApi.Controllers
             if (product == null) return BadRequest();
             return Ok(await _repository.Update(product));
         }
+
         [HttpDelete("{id}")]
         public async Task<IActionResult> Delete(long id)
         {

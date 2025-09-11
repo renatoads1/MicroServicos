@@ -83,7 +83,7 @@ namespace AulaMSFront.Services
                   JsonConvert.SerializeObject(product),
                   Encoding.UTF8,
                   "application/json");
-            var response = await _client.PostAsync($"{_config["ServicesUrls:ProductApi"]}/api/v1/controller", content);
+            var response = await _client.PutAsync($"{_config["ServicesUrls:ProductApi"]}/api/v1/controller", content);
 
             // Verifica se a resposta foi bem sucedida
             response.EnsureSuccessStatusCode();
@@ -94,9 +94,11 @@ namespace AulaMSFront.Services
 
             return createdProduct;
         }
-        public Task<bool> DeleteProductsAsync(long id) { 
-            
-            throw new NotImplementedException();
+        public Task<bool> DeleteProductsAsync(long id) {
+            AddJwtHeader();
+            var response =  _client.DeleteAsync($"{_config["ServicesUrls:ProductApi"]}/api/v1/controller/{id}");
+            return Task.FromResult(response.Result.IsSuccessStatusCode);
+
         }
 
     }
