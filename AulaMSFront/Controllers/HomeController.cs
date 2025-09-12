@@ -9,16 +9,21 @@ namespace AulaMSFront.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IAuthService _authService;
+        private readonly IProductService _productService;
 
-        public HomeController(ILogger<HomeController> logger, IAuthService authService)
+        public HomeController(ILogger<HomeController> logger,
+            IAuthService authService,
+            IProductService productService)
         {
             _authService = authService;
             _logger = logger;
+            _productService = productService;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var products =  _productService.GetAllProductsAsync().Result;
+            return View(products);
         }
 
         public IActionResult Privacy()
