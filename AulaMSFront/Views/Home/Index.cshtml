@@ -10,10 +10,11 @@
                             <h5 class="card-title">@product.Name</h5>
                         </div>
                         <div class="card-body">
-                            <p class="card-text">@product.Description</p>
+                            <p class="card-text">@product.SubstringDescription()</p>
                             <p class="card-text">Price: @product.Price.ToString("C")</p>
                             <p class="card-text">Category: @product.CategoryName</p>
                             <a href="#" class="btn btn-primary">Add to Cart</a>
+                            <a asp-action="Details" asp-route-id="@product.Id" class="btn btn-sucsess">Detail</a>
                         </div>
                     </div>
                 </div>

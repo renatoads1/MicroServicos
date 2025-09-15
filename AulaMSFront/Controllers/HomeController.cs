@@ -1,5 +1,7 @@
 ﻿using AulaMSFront.Models;
 using AulaMSFront.Services.IServices;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -23,6 +25,14 @@ namespace AulaMSFront.Controllers
         public IActionResult Index()
         {
             var products =  _productService.GetAllProductsAsync().Result;
+            return View(products);
+        }
+        [HttpGet]
+        [Authorize]
+        public async  Task<IActionResult> Detail(int id)
+        {
+            var token = await HttpContext.GetTokenAsync("JWTToken");
+            var products = await _productService.GetByIdProductsAsync(id);
             return View(products);
         }
 
