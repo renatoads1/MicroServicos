@@ -4,6 +4,9 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.Cookies;
+using System.Security.Claims;
 
 namespace AulaMSFront.Controllers
 {
@@ -50,6 +53,8 @@ namespace AulaMSFront.Controllers
         [HttpPost]
         public async Task<IActionResult> Login(LoginModel login)
         {
+
+
             var token = await _authService.LoginAsync(login);
             if (string.IsNullOrEmpty(token))
             {
@@ -57,8 +62,33 @@ namespace AulaMSFront.Controllers
                 return View();
             }
 
+
+
             // Armazenar o token na sessão
             HttpContext.Session.SetString("JWTToken", token);
+
+            var token2 = await _authService.LoginAsync(login);
+            if (string.IsNullOrEmpty(token2))
+            {
+                ViewBag.Message = "Usuário ou senha inválidos";
+                return View();
+            }
+            var claims = new List<Claim>
+            {
+                new Claim(ClaimTypes.Name, login.Username),
+                new Claim("JWTToken", token)
+                // Adicione outros claims se necessário
+            };
+
+            var claimsIdentity = new ClaimsIdentity(claims, CookieAuthenticationDefaults.AuthenticationScheme);
+
+            // Autentique o usuário criando o cookie
+            await HttpContext.SignInAsync(
+                CookieAuthenticationDefaults.AuthenticationScheme,
+                new ClaimsPrincipal(claimsIdentity));
+
+            HttpContext.Session.SetString("JWTToken", token);
+
             return RedirectToAction("Index");
         }
 

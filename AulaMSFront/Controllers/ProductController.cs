@@ -1,5 +1,6 @@
 ﻿using AulaMSFront.Models;
 using AulaMSFront.Services.IServices;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace AulaMSFront.Controllers
@@ -12,7 +13,7 @@ namespace AulaMSFront.Controllers
         {
             _productService = productService;
         }
-
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             var products = await _productService.GetAllProductsAsync();

@@ -1,7 +1,15 @@
 using AulaMSFront.Services;
 using AulaMSFront.Services.IServices;
+using Microsoft.AspNetCore.Authentication.Cookies;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+    .AddCookie(options =>
+    {
+        options.LoginPath = "/Home/Login";
+        options.AccessDeniedPath = "/Home/AccessDenied";
+    });
+
 
 builder.Services.AddHttpContextAccessor();
 builder.Services.AddSession(); // Habilita uso de sessão
@@ -38,6 +46,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 app.UseSession(); // Habilita uso de sessão
 
