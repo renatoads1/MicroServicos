@@ -67,12 +67,6 @@ namespace AulaMSFront.Controllers
             // Armazenar o token na sessão
             HttpContext.Session.SetString("JWTToken", token);
 
-            var token2 = await _authService.LoginAsync(login);
-            if (string.IsNullOrEmpty(token2))
-            {
-                ViewBag.Message = "Usuário ou senha inválidos";
-                return View();
-            }
             var claims = new List<Claim>
             {
                 new Claim(ClaimTypes.Name, login.Username),
