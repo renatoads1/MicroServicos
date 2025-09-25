@@ -13,6 +13,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProductApi", "ProductApi\Pr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CarrinhoApi", "CarrinhoApi\CarrinhoApi.csproj", "{87C961F8-E5EE-4380-A40F-E987650BC45B}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Integration", "Integration", "{02EA681E-C7D8-13C7-8484-4AC65E1B71E8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MessageBuss", "MessageBuss\MessageBuss.csproj", "{60A14771-1877-4EC0-A52F-D49340EEB7C4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -31,6 +35,10 @@ Global
 		{87C961F8-E5EE-4380-A40F-E987650BC45B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{87C961F8-E5EE-4380-A40F-E987650BC45B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{87C961F8-E5EE-4380-A40F-E987650BC45B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{60A14771-1877-4EC0-A52F-D49340EEB7C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{60A14771-1877-4EC0-A52F-D49340EEB7C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{60A14771-1877-4EC0-A52F-D49340EEB7C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{60A14771-1877-4EC0-A52F-D49340EEB7C4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -39,6 +47,7 @@ Global
 		{DA3D073A-316D-4B9F-B64B-76C721BF9172} = {BBDF22BA-06C4-43A2-AFE3-37915AB54145}
 		{01A29BC7-F515-48DD-AB0E-61F9D5D6FF63} = {0299946D-A0CD-46F9-9B39-AA651CD42706}
 		{87C961F8-E5EE-4380-A40F-E987650BC45B} = {0299946D-A0CD-46F9-9B39-AA651CD42706}
+		{60A14771-1877-4EC0-A52F-D49340EEB7C4} = {02EA681E-C7D8-13C7-8484-4AC65E1B71E8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {3DDA8F3C-FE71-4EBA-980E-95F7605893B8}

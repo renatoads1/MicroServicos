@@ -12,6 +12,8 @@ namespace CarrinhoApi.Model.Context
         {            
         }
         public DbSet<Product> Products { get; set; }
+        public DbSet<CarrinhoCabeca> CarrinhoCabeca { get; set; }
+        public DbSet<CarrinhoDetalhe> CarrinhoDetalhe { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

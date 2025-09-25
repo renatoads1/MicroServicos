@@ -1,6 +1,7 @@
 using AutoMapper;
 using CarrinhoApi.Config;
 using CarrinhoApi.Model.Context;
+using CarrinhoApi.Repository;
 using CarrinhoApi.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -18,7 +19,12 @@ builder.Services.AddDbContext<MysqlContext>(opt => opt.UseMySql(connection,
 IMapper mapper = CarrinhoApi.Config.MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-//builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
+//interfaces 
+builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<ICarrinhoRepository,CarrinhoRepository>();
+
+//conf services
 builder.Services.AddScoped<AuthService>();
 builder.Services.AddControllers();
 

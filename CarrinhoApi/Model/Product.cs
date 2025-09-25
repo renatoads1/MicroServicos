@@ -5,8 +5,13 @@ using System.ComponentModel.DataAnnotations.Schema;
 namespace CarrinhoApi.Model
 {
     [Table("product")]
-    public class Product: BaseEntity
+    public class Product
     {
+        //gerar o id do banco em vez de usar identity
+        [Key,DatabaseGenerated(DatabaseGeneratedOption.None)]
+        [Column("id")]
+        public long Id { get; set; }
+        
         [Column("name")]
         [Required]
         [StringLength(150)]

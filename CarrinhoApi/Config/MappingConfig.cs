@@ -9,8 +9,11 @@ namespace CarrinhoApi.Config
         {
             var mappingconfig = new MapperConfiguration(cfg =>
             {
-                cfg.CreateMap<DTO.ProductDTO, Model.Product>();
-                cfg.CreateMap<Model.Product, DTO.ProductDTO>();
+                cfg.CreateMap<DTO.ProductDTO, Model.Product>().ReverseMap();
+                cfg.CreateMap<DTO.CarrinhoCabecaDTO, Model.CarrinhoCabeca>().ReverseMap();
+                cfg.CreateMap<DTO.CarrinhoDetalheDTO, Model.CarrinhoDetalhe>().ReverseMap();
+                cfg.CreateMap<DTO.CarrinhoDTO, Model.Carrinho>().ReverseMap();
+                
             });
             return mappingconfig;
         }
