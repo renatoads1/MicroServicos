@@ -42,6 +42,7 @@ var connection = builder.Configuration["MysqlConnection:MysqlConnectionString"];
 builder.Services.AddDbContext<MysqlContext>(opt => opt.UseMySql(connection,
     new MySqlServerVersion(new Version(8,0,43))));
 
+//Automapper Config
 IMapper mapper = ProductApi.Config.MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
