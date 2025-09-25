@@ -1,6 +1,7 @@
 using AutoMapper;
 using CarrinhoApi.Config;
 using CarrinhoApi.Model.Context;
+using CarrinhoApi.RabbitMQSender;
 using CarrinhoApi.Repository;
 using CarrinhoApi.Service;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -21,8 +22,9 @@ builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 //interfaces 
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductRepository , ProductRepository>();
 builder.Services.AddScoped<ICarrinhoRepository,CarrinhoRepository>();
+builder.Services.AddScoped<IRabbitMQMessageSender,RabbitMQMessageSender>();
 
 //conf services
 builder.Services.AddScoped<AuthService>();

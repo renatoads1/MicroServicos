@@ -1,5 +1,4 @@
 ﻿using MessageBuss;
-using MongoDB.Bson.IO;
 using RabbitMQ.Client;
 using System.Text;
 using Newtonsoft.Json;
@@ -33,6 +32,7 @@ namespace CarrinhoApi.RabbitMQSender
             using var channel = _connection.CreateModel();
             channel.QueueDeclare(queue: queueName, false, false, false, null);
             byte[] body = Encoding.UTF8.GetBytes(JsonConvert.SerializeObject(message));
+            channel.BasicPublish(exchange: "", routingKey: queueName, basicProperties: null, body: body);
 
             throw new NotImplementedException();
         }
